@@ -6,38 +6,28 @@
     <title>Desafio 06</title>
     <link rel="stylesheet" href="../estilos/style.css">
     <style>
-        div#resul {
-            margin-right: 445px;
-            margin-top: 3px;
-            display: inline-block;
-            float: right;
-            font-weight: bold;
+        table {
+            width: 200px;
+            border-collapse: collapse;
         }
-        article {
-            padding-bottom: 40px;
+        td {
+            padding: 10px;
+            text-align: center;
         }
-        p {
-            margin-right: 20px;
-            display: inline-block;
-            font-weight: bold;
+        .divi{
+            border-right: 1px solid black;
         }
-        p#ver {
-            margin-right: 5px;
-            padding-right: 10px;
-        }
-        div#resto{
-            float: left;
-            margin-top: 5px;
-            margin-left: 12px;
-        }
+        .res{
+            border-top: 1px solid black;
+        } 
     </style>
 </head>
 <body>
     <main>
         <?php 
-            $divisor = $_POST["divisor"] ?? 0;
+            $divisor = $_POST["divisor"] ?? 1;
             $dividendo = $_POST["dividendo"] ?? 0;
-            $divisao= $dividendo/$divisor ?? 0;
+            $divisao= intdiv($dividendo, $divisor) ?? 0;
 
         ?>
         <article>
@@ -47,18 +37,23 @@
                 <input type="number" name="dividendo" id="dividendo" value="<?=$dividendo?>">
 
                 <label for="divisor">Divisor: </label>
-                <input type="number" name="divisor" id="divisor" value="<?=$divisor?>">
+                <input type="number" name="divisor" id="divisor" value="<?=$divisor?>" min="1">
                 
                 <input type="submit" value="Calcular">
             </form>
         </article>
         <article>
-            <?php 
-                echo"<p id='ver'>$dividendo</p><p>$divisor</p>";
-                echo "<div id='resul'>".number_format($divisao,)."</div>";
-                echo"<div id='resto'>".$dividendo%$divisor."</div>";
-                
-            ?>
+            <h1>O estrutura da divisão</h1>
+            <table>
+                <tr>
+                    <td class="divi"><?="$dividendo";?></td>
+                    <td><?="$divisor";?></td>
+                </tr>
+                <tr>
+                    <td class="divi"><?=$dividendo%$divisor;?></td>
+                    <td class="res"><?=$divisao;?></td>
+                </tr>
+            </table>
         </article>
     </main>
 </body>

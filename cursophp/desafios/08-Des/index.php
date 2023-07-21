@@ -15,7 +15,9 @@
     <main>
         <?php 
             $numero= $_GET["numero"]??0;
-            $cubica= $numero *3*3*3;
+            $cubica= $numero**(1/3);
+            //Raiz quadrada **(1/2)
+            //Igual a raiz cubica **(1/3)
         ?>
         <article>
             <h1>Inorme um numero</h1>

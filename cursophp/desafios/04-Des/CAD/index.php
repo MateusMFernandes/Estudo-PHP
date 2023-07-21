@@ -35,13 +35,13 @@
             <?php
                 $inicio = date("m-d-Y", strtotime("-7 days"));
                 $fim = date("m-d-Y");
-                $url = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=\''.$inicio.'\'&@dataFinalCotacao=\''.$fim.'\'&$top=1&$orderby=datahoracota%C3%A7%C3%A3o%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao';
+                $url = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=\'07-14-2023\'&@dataFinalCotacao=\'07-21-2023\'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao';
 
                $dados = json_decode(file_get_contents($url), true);
                $cotação = $dados ["value"][0] ["cotacaoCompra"];
 
                $valor = $_POST["numero"];
-               $dolar = "5.22";
+              
                $soma = $valor/$cotação;
 
                echo "<p>Seu R$ ". number_format($valor, 2, ",",".") ." equivalem a U$". number_format($soma, 2)." !</p>";
